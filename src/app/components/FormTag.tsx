@@ -1,7 +1,13 @@
 "use client"
-import { FormEvent } from "react"
+import { FC, FormEvent } from "react"
 
-export default function FormTag() {
+interface FormTagProps {
+   addTag: (value: string) => void
+}
+
+const FormTag:FC<FormTagProps> = ({
+   addTag
+}) => {
    const handleSubmit = (e: FormEvent) => {
       e.preventDefault()
       // @ts-ignore
@@ -10,6 +16,7 @@ export default function FormTag() {
       if (input.value == "") {
          alert("Cannot be empty")
       } else {
+         addTag(input.value)
       }
    }
    return (
@@ -25,3 +32,4 @@ export default function FormTag() {
       </form>
    )
 }
+export default FormTag
