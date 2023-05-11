@@ -10,10 +10,13 @@ export default function Home() {
 
    const formatAndAdd = (value: string) => {
       const tags = value.split(",").filter(x => x !== "")
-      setTags(tags.map(tag => ({
-         name: tag,
-         color: randomColor()
-      })))
+      setTags((prev) => {
+         const added = tags.map(tag => ({
+            name: tag,
+            color: randomColor()
+         }))
+         return [...prev, ...added]
+      })
    }
    console.log(tags)
 

@@ -18,6 +18,7 @@ const FormTag:FC<FormTagProps> = ({
       } else {
          addTag(input.value)
       }
+      input.value = ""
    }
    return (
       <form onSubmit={handleSubmit} className="w-full flex">
