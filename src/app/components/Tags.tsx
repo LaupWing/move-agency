@@ -34,10 +34,11 @@ const Tag:FC<{tag: Tag}> = ({tag}) => {
          <p>
             {tag.name}
          </p>
-         <GrFormClose 
-            className={`$ml-2`} 
-            size={22} 
-         />
+         <button className={`duration-300 overflow-hidden ${hovering ? "ml-2 max-w-lg" : "ml-0 max-w-0"}`}>
+            <GrFormClose
+               size={22} 
+            />
+         </button>
       </div>
    )
 }
