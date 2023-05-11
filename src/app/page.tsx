@@ -3,6 +3,7 @@ import { useState } from "react"
 import FormTag from "./components/FormTag"
 import { Tag } from "@/types"
 import randomColor from "randomcolor"
+import Tags from "./components/Tags"
 
 export default function Home() {
    const [tags, setTags] = useState<Tag[]>([])
@@ -25,6 +26,9 @@ export default function Home() {
                </h1>
                <FormTag addTag={formatAndAdd} />
             </header>
+            <Tags 
+               tags={tags}
+            />
          </div>
       </main>
    )

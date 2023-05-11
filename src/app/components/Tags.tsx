@@ -1,12 +1,26 @@
 import { Tag } from "@/types"
 import { FC } from "react"
 
-export default function Tags() {
+const Tags:FC<{
+   tags: Tag[]
+}> = ({tags}) => {
    return (
-      <div>Tags</div>
+      <div className="flex flex-wrap mt-4">
+         {tags.map(tag => (
+            <Tag
+               tag={tag}
+            />
+         ))}
+      </div>
    )
 }
 
-const Tag:FC<{tag: Tag}> = () => {
-   return null
+export default Tags
+
+const Tag:FC<{tag: Tag}> = ({tag}) => {
+   return (
+      <div>
+         {tag.name}
+      </div>
+   )
 }
