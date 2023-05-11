@@ -1,13 +1,20 @@
 "use client"
 import { useState } from "react"
 import FormTag from "./components/FormTag"
+import { Tag } from "@/types"
+import randomColor from "randomcolor"
 
 export default function Home() {
-   const [tags, setTags] = useState([])
+   const [tags, setTags] = useState<Tag[]>([])
 
    const formatAndAdd = (value: string) => {
-
+      const tags = value.split(",").filter(x => x !== "")
+      setTags(tags.map(tag => ({
+         name: tag,
+         color: randomColor()
+      })))
    }
+   console.log(tags)
 
    return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
