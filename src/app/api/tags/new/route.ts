@@ -1,18 +1,19 @@
 import { Tag } from "@/types"
 import { PrismaClient } from "@prisma/client"
+import { NextResponse } from "next/server"
 const prisma = new PrismaClient()
 
 export const POST = async (request: Request) => {
    const {tags} = await request.json()
    
    const promises = tags.map(async (tag: Tag) => {
-      await prisma.tag.create({
+      return prisma.tag.create({
          data: {
             name: tag.name,
             color: tag.color
          }
       })
    })
-   await Promise.all(promises)
-   return "test"
+   const _tags = await Promise.all(promises)
+   return NextResponse.json(_tags)
 }

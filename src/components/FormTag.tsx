@@ -1,16 +1,19 @@
 "use client"
 import { FC, FormEvent } from "react"
 import randomColor from "randomcolor"
+import { Tag } from "@prisma/client"
 
 interface FormTagProps {
-   addTag: (value: string) => void
+   updateTags: (newTags: Tag[]) => void
 }
 
-const FormTag:FC = () => {
+const FormTag:FC<FormTagProps> = ({
+   updateTags
+}) => {
 
-   const postTag = (value: string) => {
+   const postTag = async (value: string) => {
       const tags = value.split(",").filter(x => x !== "")
-      fetch("/api/new", {
+      const res = await fetch("/api/tags/new", {
          method: "POST",
          body: JSON.stringify({
             tags: tags.map(tag => ({
@@ -19,13 +22,9 @@ const FormTag:FC = () => {
             }))
          })
       })
-      // setTags((prev) => {
-      //    const added = tags.map(tag => ({
-      //       name: tag,
-      //       color: randomColor()
-      //    }))
-      //    return [...prev, ...added]
-      // })
+      const newTags = await res.json()
+
+      updateTags(newTags)
    }
    const handleSubmit = (e: FormEvent) => {
       e.preventDefault()
