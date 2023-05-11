@@ -4,8 +4,17 @@ import FormTag from "../components/FormTag"
 import { Tag } from "@/types"
 import randomColor from "randomcolor"
 import Tags from "../components/Tags"
+// import { PrismaClient } from '@prisma/client'
+// const prisma = new PrismaClient()
 
-export default function Home() {
+// async function fetchTags() {
+//    const response = await prisma.tag.findMany()
+//    console.log(response)
+//    return response
+// }
+
+export default async function Home() {
+   // const tags = await fetchTags()
    const [tags, setTags] = useState<Tag[]>([])
 
    const formatAndAdd = (value: string) => {
@@ -27,7 +36,7 @@ export default function Home() {
          return [...prev, ...added]
       })
    }
-   console.log(tags)
+   // console.log(tags)
 
    return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -45,3 +54,4 @@ export default function Home() {
       </main>
    )
 }
+
