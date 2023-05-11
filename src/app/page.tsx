@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import FormTag from "../components/FormTag"
 import { Tag } from "@/types"
 import randomColor from "randomcolor"
@@ -36,7 +36,17 @@ export default async function Home() {
          return [...prev, ...added]
       })
    }
-   // console.log(tags)
+   
+   useEffect(() => {
+      // const init = async () => {
+      //    const res = await fetch("/api/tags")
+      //    const json = await res.json()
+      //    console.log(json)
+      //    setTags(json)
+      // }
+      // init()
+   }, [])
+   console.log(tags)
 
    return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
