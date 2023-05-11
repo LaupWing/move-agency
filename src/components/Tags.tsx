@@ -1,15 +1,18 @@
 "use client"
-import { Tag } from "@/types"
+import { Tag } from "@prisma/client"
 import { FC, useState } from "react"
 import { GrFormClose } from "react-icons/gr"
 
 const Tags:FC<{
    tags: Tag[]
 }> = ({tags}) => {
+   const [_tags, setTags] = useState([])
+
    return (
       <div className="flex flex-wrap mt-4 gap-2">
-         {tags.map(tag => (
+         {tags.map((tag: Tag) => (
             <Tag
+               key={tag.id}
                tag={tag}
             />
          ))}

@@ -1,13 +1,32 @@
 "use client"
 import { FC, FormEvent } from "react"
+import randomColor from "randomcolor"
 
 interface FormTagProps {
    addTag: (value: string) => void
 }
 
-const FormTag:FC<FormTagProps> = ({
-   addTag
-}) => {
+const FormTag:FC = () => {
+
+   const postTag = (value: string) => {
+      const tags = value.split(",").filter(x => x !== "")
+      fetch("/api/new", {
+         method: "POST",
+         body: JSON.stringify({
+            tags: tags.map(tag => ({
+               name: tag,
+               color: randomColor()
+            }))
+         })
+      })
+      // setTags((prev) => {
+      //    const added = tags.map(tag => ({
+      //       name: tag,
+      //       color: randomColor()
+      //    }))
+      //    return [...prev, ...added]
+      // })
+   }
    const handleSubmit = (e: FormEvent) => {
       e.preventDefault()
       // @ts-ignore
@@ -16,7 +35,7 @@ const FormTag:FC<FormTagProps> = ({
       if (input.value == "") {
          alert("Cannot be empty")
       } else {
-         addTag(input.value)
+         postTag(input.value)
       }
       input.value = ""
    }
