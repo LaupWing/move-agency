@@ -1,9 +1,9 @@
 "use client"
 import { useState } from "react"
-import FormTag from "./components/FormTag"
+import FormTag from "../components/FormTag"
 import { Tag } from "@/types"
 import randomColor from "randomcolor"
-import Tags from "./components/Tags"
+import Tags from "../components/Tags"
 
 export default function Home() {
    const [tags, setTags] = useState<Tag[]>([])
