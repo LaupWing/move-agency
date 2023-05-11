@@ -10,6 +10,15 @@ export default function Home() {
 
    const formatAndAdd = (value: string) => {
       const tags = value.split(",").filter(x => x !== "")
+      fetch("/api/new", {
+         method: "POST",
+         body: JSON.stringify({
+            tags: tags.map(tag => ({
+               name: tag,
+               color: randomColor()
+            }))
+         })
+      })
       setTags((prev) => {
          const added = tags.map(tag => ({
             name: tag,
