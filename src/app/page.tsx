@@ -4,7 +4,7 @@ const prisma = new PrismaClient()
 
 async function fetchTags() {
    const response = await prisma.tag.findMany()
-   await prisma.tag.deleteMany()
+   
    return response
 }
 

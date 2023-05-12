@@ -17,6 +17,7 @@ export const POST = async (request: Request) => {
          }
       })
    })
+   console.log(promises)
    const _tags = await Promise.all(promises)
    return NextResponse.json(_tags)
 }

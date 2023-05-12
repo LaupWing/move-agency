@@ -13,7 +13,7 @@ const FormTag:FC<FormTagProps> = ({
 
    const postTag = async (value: string) => {
       const tags = value.split(",").filter(x => x !== "")
-      const res = await fetch("/api/tags/new", {
+      const res = await fetch("/api/tags", {
          method: "POST",
          body: JSON.stringify({
             tags: tags.map(tag => ({
@@ -27,6 +27,7 @@ const FormTag:FC<FormTagProps> = ({
       updateTags(newTags)
    }
    const handleSubmit = (e: FormEvent) => {
+      console.log(e)
       e.preventDefault()
       // @ts-ignore
       const input = (e.target as HTMLFormElement).elements["tags"] as HTMLInputElement
