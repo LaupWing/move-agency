@@ -12,6 +12,9 @@ const TagsContainer:FC<{tags: Tag[]}> = ({
    const updateTags = (newTags: Tag[]) => {
       setTags((prev) => [...prev, ...newTags])
    }
+   const removeTag = (id: string) => {
+      setTags((prev) => prev.filter(tag => tag.id !== id))
+   }
 
    return (
       <>
@@ -23,6 +26,7 @@ const TagsContainer:FC<{tags: Tag[]}> = ({
          </header>
          <Tags 
             tags={_tags}
+            removeTag={removeTag}
          />
       </>
    )
