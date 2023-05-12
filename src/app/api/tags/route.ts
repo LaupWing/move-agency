@@ -20,3 +20,4 @@ export const POST = async (request: Request) => {
    const _tags = await Promise.all(promises)
    return NextResponse.json(_tags)
 }
+
