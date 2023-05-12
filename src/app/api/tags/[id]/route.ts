@@ -5,6 +5,11 @@ const prisma = new PrismaClient()
 export const DELETE = async (request: NextRequest) => {
    const parts = request.url.split("/") 
    const id = parts[parts.length -1]
+   const tag = await prisma.tag.findUnique({
+      where: {
+         id
+      }
+   })
    
    await prisma.tag.delete({
       where: {
@@ -12,5 +17,5 @@ export const DELETE = async (request: NextRequest) => {
       }
    })
 
-   return NextResponse.json(`Successfully Deleted tag ${id}`)
+   return NextResponse.json(`Successfully Deleted tag ${tag!.name}`)
 }

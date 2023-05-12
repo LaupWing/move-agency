@@ -1,3 +1,4 @@
+"use client"
 import { ToastContainer } from "react-toastify"
 import "./globals.css"
 import { Inter } from "next/font/google"
