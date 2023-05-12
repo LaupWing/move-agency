@@ -1,12 +1,10 @@
 import TagsContainer from "@/components/TagsContainer"
-import FormTag from "../components/FormTag"
-
-import Tags from "../components/Tags"
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function fetchTags() {
    const response = await prisma.tag.findMany()
+   await prisma.tag.deleteMany()
    return response
 }
 
