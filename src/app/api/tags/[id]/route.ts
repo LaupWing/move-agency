@@ -12,5 +12,5 @@ export const DELETE = async (request: NextRequest) => {
       }
    })
 
-   return NextResponse.json(`Deleted tag ${id}`)
+   return NextResponse.json(`Successfully Deleted tag ${id}`)
 }

@@ -2,6 +2,7 @@
 import { Tag } from "@prisma/client"
 import { FC, useState } from "react"
 import { GrFormClose } from "react-icons/gr"
+import { toast } from "react-toastify"
 
 const Tags:FC<{
    tags: Tag[],
@@ -15,7 +16,7 @@ const Tags:FC<{
          method: "DELETE"
       })
       const json = await res.json()
-      console.log(json)
+      toast.success(json)
       removeTag(id)
    }
 
