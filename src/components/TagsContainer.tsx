@@ -23,6 +23,7 @@ const TagsContainer:FC<{tags: Tag[]}> = ({
                Tags
             </h1>
             <FormTag updateTags={updateTags} />
+            <p className="text-sm text-gray-300 uppercase font-bold mt-1">Currently the is not working, because it is connected to a sqlite database. With vercel you cannot write and create, so I need to swap it for a Postgres one.</p>
          </header>
          <Tags 
             tags={_tags}
